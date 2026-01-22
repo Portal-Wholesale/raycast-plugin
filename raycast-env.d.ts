@@ -13,12 +13,12 @@ type ExtensionPreferences = {}
 declare type Preferences = ExtensionPreferences
 
 declare namespace Preferences {
-  /** Preferences accessible in the `search-brands` command */
-  export type SearchBrands = ExtensionPreferences & {}
+  /** Preferences accessible in the `search-portal-wholesale-brands` command */
+  export type SearchPortalWholesaleBrands = ExtensionPreferences & {}
 }
 
 declare namespace Arguments {
-  /** Arguments passed to the `search-brands` command */
-  export type SearchBrands = {}
+  /** Arguments passed to the `search-portal-wholesale-brands` command */
+  export type SearchPortalWholesaleBrands = {}
 }
 

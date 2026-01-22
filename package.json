@@ -8,7 +8,7 @@
   "license": "MIT",
   "commands": [
     {
-      "name": "search-brands",
+      "name": "search-portal-wholesale-brands",
       "title": "Search Brands",
       "description": "Search Portal Wholesale brands by name or website URL",
       "mode": "view"

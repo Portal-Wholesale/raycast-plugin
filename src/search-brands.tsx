@@ -1,4 +1,4 @@
-import { ActionPanel, Action, List, Icon } from "@raycast/api";
+import { ActionPanel, Action, Grid, Icon } from "@raycast/api";
 import { useFetch } from "@raycast/utils";
 import { useState } from "react";
 
@@ -39,7 +39,7 @@ function getBrandLogoUrl(brand: Brand): string | undefined {
     return undefined;
   }
   const imageUrl = `${ASSETS_URL}/${brand.brand_logo.asset_path}`;
-  return `${IMAGE_RESIZER_URL}/?image=${encodeURIComponent(imageUrl)}&width=100&height=100&fit=contain`;
+  return `${IMAGE_RESIZER_URL}/?image=${encodeURIComponent(imageUrl)}&width=256&height=256&fit=contain`;
 }
 
 function formatLocation(brand: Brand): string {
@@ -64,30 +64,32 @@ export default function SearchBrands() {
   );
 
   return (
-    <List
+    <Grid
       isLoading={isLoading}
       searchBarPlaceholder="Search for a brand by name or website..."
       onSearchTextChange={setSearchText}
       throttle
+      columns={5}
+      inset={Grid.Inset.Medium}
     >
       {searchText.length === 0 ? (
-        <List.EmptyView
+        <Grid.EmptyView
           icon={Icon.MagnifyingGlass}
           title="Start typing to search for brands"
         />
       ) : (brands ?? []).length === 0 && !isLoading ? (
-        <List.EmptyView
+        <Grid.EmptyView
           icon={Icon.XMarkCircle}
           title="No brands found"
           description={`No results for "${searchText}"`}
         />
       ) : (
         (brands ?? []).map((brand) => (
-          <List.Item
+          <Grid.Item
             key={brand.id}
             title={brand.name}
             subtitle={formatLocation(brand)}
-            icon={getBrandLogoUrl(brand) ?? Icon.Building}
+            content={getBrandLogoUrl(brand) ?? Icon.Building}
             actions={
               <ActionPanel>
                 <ActionPanel.Section title="Open">
@@ -119,6 +121,6 @@ export default function SearchBrands() {
           />
         ))
       )}
-    </List>
+    </Grid>
   );
 }

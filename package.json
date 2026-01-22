@@ -3,7 +3,7 @@
   "title": "Portal Wholesale",
   "description": "Search and manage Portal Wholesale brands",
   "icon": "extension-icon.png",
-  "author": "nick",
+  "author": "nickdichev",
   "categories": ["Productivity", "Web"],
   "license": "MIT",
   "commands": [

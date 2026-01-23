@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.0] - 2026-01-22
+## [Initial Release] - {PR_MERGE_DATE}
 
 - Initial release
 - Search brands by name or website URL

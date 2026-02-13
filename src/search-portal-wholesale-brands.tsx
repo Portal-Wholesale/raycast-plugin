@@ -91,8 +91,8 @@ export default function SearchBrands() {
                     icon={Icon.Globe}
                   />
                   <Action.OpenInBrowser
-                    title="Open Brand Admin"
-                    url={`${BASE_URL}/admin/brands/${brand.slug}`}
+                    title="Open Organization Admin"
+                    url={`${BASE_URL}/admin/organizations/redirect-for-brand?slug=${brand.slug}`}
                     icon={Icon.Gear}
                   />
                 </ActionPanel.Section>

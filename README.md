@@ -11,6 +11,6 @@ Search Portal Wholesale brands by name or website URL.
 ## Actions
 
 - **Open Brand Page** - Opens the brand's public page on Portal Wholesale
-- **Open Brand Admin** - Opens the brand's admin page
+- **Open Organization Admin** - Opens the organization admin page for the brand
 - **Copy Brand Name** - Copies the brand name to clipboard
 - **Copy Brand Page URL** - Copies the brand page URL to clipboard

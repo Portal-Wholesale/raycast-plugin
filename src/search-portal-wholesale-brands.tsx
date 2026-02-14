@@ -34,10 +34,13 @@ function getBrandLogoUrl(brand: Brand): string | undefined {
   return brand.brand_logo?.url;
 }
 
+const countryNames = new Intl.DisplayNames(["en"], { type: "region" });
+
 function formatLocation(brand: Brand): string {
-  const parts = [brand.headquarters_city, brand.headquarters_country].filter(
-    Boolean,
-  );
+  const country = brand.headquarters_country
+    ? countryNames.of(brand.headquarters_country)
+    : undefined;
+  const parts = [brand.headquarters_city, country].filter(Boolean);
   return parts.join(", ");
 }
 

@@ -3,7 +3,7 @@
 
   inputs = {
     flake-parts.url = "github:hercules-ci/flake-parts";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
   outputs =
@@ -21,7 +21,6 @@
         "x86_64-linux"
         "aarch64-linux"
         "aarch64-darwin"
-        "x86_64-darwin"
       ];
       perSystem =
         {
@@ -30,6 +29,7 @@
           inputs',
           pkgs,
           system,
+          lib,
           ...
         }:
         {
@@ -43,6 +43,11 @@
           devShells.default = pkgs.mkShell {
             buildInputs = [ pkgs.nodejs ];
           };
+
+          # Nixbot builds `checks`: every package and dev shell.
+          checks =
+            config.packages
+            // lib.mapAttrs' (name: lib.nameValuePair "devShell-${name}") config.devShells;
         };
       flake = {
         # The usual flake attributes can be defined here, including system-

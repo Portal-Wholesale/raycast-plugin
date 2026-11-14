@@ -33,5 +33,6 @@
     "lint": "ray lint",
     "prepublishOnly": "echo \"\\n\\nIt seems like you are trying to publish the Raycast extension to npm.\\n\\nIf you did not intend to do this, make sure you are in a folder where you intended to publish to npm.\\n\\nIf you did intend to publish this package to npm, remove the \\`prepublishOnly\\` script and rerun \\`npm publish\\` again.\\n\\n\" && exit 1",
     "publish": "npx @raycast/api@latest publish"
-  }
+  },
+  "platforms": ["macOS"]
 }

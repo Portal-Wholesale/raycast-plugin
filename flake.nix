@@ -47,7 +47,16 @@
           # Nixbot builds `checks`: every package and dev shell.
           checks =
             config.packages
-            // lib.mapAttrs' (name: lib.nameValuePair "devShell-${name}") config.devShells;
+            // lib.mapAttrs' (name: lib.nameValuePair "devShell-${name}") config.devShells
+            // lib.optionalAttrs (system == "x86_64-linux") {
+              # Secret scan of the committed tree (no git history in the sandbox).
+              gitleaks = pkgs.runCommand "gitleaks" { nativeBuildInputs = [ pkgs.gitleaks ]; } ''
+                export HOME="$TMPDIR" GOMAXPROCS="$NIX_BUILD_CORES"
+                cd ${lib.cleanSource ./.}
+                gitleaks dir --no-banner --redact .
+                touch $out
+              '';
+            };
         };
       flake = {
         # The usual flake attributes can be defined here, including system-
